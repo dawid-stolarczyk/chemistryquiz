@@ -1,0 +1,54 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	background-color: #aaa;
+	font-size: 14px;
+}
+.questioncontainer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 300px;
+	background-color: #fff;
+	margin: 5vh 0;
+}
+.questioncontainer div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 20px;
+	max-width: 800px;
+}
+.answerscontainer {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.answerbutton {
+	display: inline-block;
+}
+.answerbutton button {
+	width: 40vw;
+	max-width: 300px;
+	max-height: 300px;
+	height: 40vw;
+	margin: 10px 10px;
+	border: 1px solid rgba(0, 0, 0, 0.7);
+	border-radius: 20px;
+}
+.firstanswer button {
+	background-color: royalblue;
+}
+.secondanswer button {
+	background-color: tomato;
+}
+.thirdanswer button {
+	background-color: yellowgreen;
+}
+.fourthanswer button {
+	background-color: rgb(214, 225, 65);
+}
