@@ -35,7 +35,7 @@ if(isset($_SESSION["badanswer"])) {
     <footer>
         <div>
             <p>Dawid Stolarczyk</p>
-            <p>Alan Mieczkowski</p>
+            <p>****</p>
             <p><a href="./admin/">Panel Nauczyciela</a></p>
         </div>
     </footer>
