@@ -24,22 +24,38 @@
 <body>
     <?php 
         require 'php/connection.php';
-
-        if (!isset($_SESSION['badanswers'])) {
-            $_SESSION['badanswers'] = 0;
+        session_start();                    
+        if (!isset($_SESSION['goodanswer'])) {
+            $_SESSION['goodanswer'] = 0;
+         }
+        if (!isset($_SESSION['badanswer'])) {
+            $_SESSION['badanswer'] = 0;
+         }
+        if (isset($_SESSION['done'])) {
+            $done = $_SESSION['done'];
+            if ($done == true) {
+                header("Location: index.php");
+             }else {}
          }
 
-        if(isset($_POST['startquiz'])) {
 
-                $name = $_POST['name'];
+        if(isset($_SESSION['name'])) {
+
+                $name = $_SESSION['name'];
                 
-                if($name == "") {
-                    header("Location: index.php");
-                }else {
+                
 
                     if(isset($_GET['question'])) {
 
                         $nrquestion=$_GET['question'];
+
+                        if(isset($_SESSION['actualquestion'])) {
+                        $actualquestion = $_SESSION['actualquestion'];
+                        }else {
+                            $actualquestion = 1; 
+                        }
+
+                        if($actualquestion == $nrquestion) {
 
                         $sql = "SELECT * FROM questions WHERE questionnumber='$nrquestion'";
                         $result = mysqli_query($conn, $sql);
@@ -55,34 +71,47 @@
                                 $fourthanswer = $row['fourthanswer'];
                                 $goodanswer = $row['goodanswer'];
                                 
-                                session_start();
+                                
+                                if(isset($_SESSION['badanswer'])) {
+
                                 $badanswers = $_SESSION["badanswer"];
+
+                                }else {
+                                    $badanswers = 0;
+                                }
+
 
                                 echo "<section class='questioncontainer'>
                                 <div>
-                                    <p>$question</p>
-                                    </div>
-                                    <div>
-                                    <p>Błędne odpowiedzi: $badanswers</p>
-                                    </div>
-                            </section>
+                                <p>$question</p>
+                                </div>
+                                <p class='badanswers'>Błędne odpowiedzi: $badanswers</p>
+                        </section>
                             <section class='answerscontainer'>
+                            <div>
                                 <form action='./php/checkanswer.php' method='post'>
                                 <input type='number' value='$questionnumber' name='id' hidden>
-                                <div class='firstanswer answerbutton'><button type='submit' name='answer' value='1'>$firstanswer</button></div>
-                                <div class='secondanswer answerbutton'><button type='submit' name='answer' value='2'>$secondanswer</button></div>
-                                <div class='thirdanswer answerbutton'><button type='submit' name='answer' value='3'>$thirdanswer</button></div>
-                                <div class='fourthanswer answerbutton'><button type='submit' name='answer' value='4'>$fourthanswer</button></div>
+                                <div class='firstanswer answerbutton'><button type='submit' name='answer' value='1'><p>$firstanswer</p></button></div>
+                                <div class='secondanswer answerbutton'><button type='submit' name='answer' value='2'><p>$secondanswer</p></button></div>
+                                <div class='thirdanswer answerbutton'><button type='submit' name='answer' value='3'><p>$thirdanswer</p></button></div>
+                                <div class='fourthanswer answerbutton'><button type='submit' name='answer' value='4'><p>$fourthanswer</p></button></div>
+                                </form>
+                            </div>
                             </section>";
 
                             }
 
                         }
+                    }else {
+                        header("Location: test.php?question=$actualquestion");
                     }
                 }
-        }
+            }
+        
     
     
     ?>
+
+
 </body>
 </html>

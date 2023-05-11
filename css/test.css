@@ -8,6 +8,7 @@ body {
 	font-size: 14px;
 }
 .questioncontainer {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -25,30 +26,55 @@ body {
 }
 .answerscontainer {
 	display: flex;
+	flex-direction: row;
 	justify-content: center;
 	flex-wrap: wrap;
 }
+.answerscontainer div {
+	text-align: center;
+}
 .answerbutton {
 	display: inline-block;
-}
-.answerbutton button {
+	position: relative;
 	width: 40vw;
 	max-width: 300px;
 	max-height: 300px;
 	height: 40vw;
 	margin: 10px 10px;
 	border: 1px solid rgba(0, 0, 0, 0.7);
+	text-align: center;
 	border-radius: 20px;
+	overflow: auto;
 }
-.firstanswer button {
+.answerbutton button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	background: none;
+}
+.answerbutton button p {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+p.badanswers {
+	position: absolute;
+	bottom: 0;
+}
+.firstanswer {
 	background-color: royalblue;
 }
-.secondanswer button {
+.secondanswer {
 	background-color: tomato;
 }
-.thirdanswer button {
+.thirdanswer {
 	background-color: yellowgreen;
 }
-.fourthanswer button {
+.fourthanswer {
 	background-color: rgb(214, 225, 65);
 }

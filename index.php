@@ -1,3 +1,12 @@
+<?php 
+session_start();
+if(isset($_SESSION["badanswer"])) {
+    unset($_SESSION["badanswer"]);
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +25,7 @@
         <h1>Quiz na temat ...</h1>
     </div>
     <div class='input'>
-        <form action="test.php?question=1" method="post">
+        <form action="./php/startquiz.php" method="post">
         <input type="text" name='name' placeholder='Imię i nazwisko'>
     </div>
     <div class="button">
@@ -27,6 +36,7 @@
         <div>
             <p>Dawid Stolarczyk</p>
             <p>Alan Mieczkowski</p>
+            <p><a href="./admin/">Panel Nauczyciela</a></p>
         </div>
     </footer>
 </body>

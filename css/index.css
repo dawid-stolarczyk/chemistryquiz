@@ -6,11 +6,14 @@
 body {
 	background-color: #aaa;
 }
+a {
+	color: black;
+}
 .h1 {
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
-	height: calc(50vh - 50px);
+	height: calc(50vh - 80px);
 }
 .input {
 	display: flex;
@@ -31,7 +34,7 @@ body {
 footer {
 	position: absolute;
 	display: flex;
-	height: 50px;
+	height: 80px;
 	bottom: 0;
 	width: 100%;
 	justify-content: center;
